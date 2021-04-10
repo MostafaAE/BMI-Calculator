@@ -5,10 +5,15 @@ import 'package:flutter/material.dart';
 import '../constants.dart';
 
 class ResultsPage extends StatelessWidget {
-  double bmi = 26.7;
-  String bmiState = 'OVERWEIGHT';
-  String bmiDescription =
-      "You have a higher than normal body weight. Try to exercise more.";
+  ResultsPage(
+      {@required this.bmiValue,
+      @required this.bmiResult,
+      @required this.bmiDescription});
+
+  final String bmiValue;
+  final String bmiResult;
+  final String bmiDescription;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,11 +43,11 @@ class ResultsPage extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Text(
-                      bmiState,
+                      bmiResult,
                       style: kBMIResult,
                     ),
                     Text(
-                      '$bmi',
+                      bmiValue,
                       style: kBMIValue,
                     ),
                     Text(

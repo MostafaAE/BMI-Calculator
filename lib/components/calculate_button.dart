@@ -1,7 +1,4 @@
-import 'file:///C:/Users/mosta/AndroidStudioProjects/bmi-calculator-flutter/lib/screens/results_page.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
 import '../constants.dart';
 
 class CalcButton extends StatelessWidget {
