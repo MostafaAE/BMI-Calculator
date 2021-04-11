@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:bmi_calculator/components/reusable_card.dart';
 import 'package:bmi_calculator/components/calculate_button.dart';
 import 'package:flutter/material.dart';
@@ -18,39 +19,38 @@ class ResultsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('BMI CALCULATOR'),
+        title: AutoSizeText('BMI CALCULATOR'),
       ),
       body: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Expanded(
+              flex: 1,
               child: Container(
-                padding: EdgeInsets.all(15.0),
-                alignment: Alignment.bottomLeft,
-                child: Text(
+                child: AutoSizeText(
                   'Your Result',
                   style: kLargeText,
                 ),
               ),
             ),
             Expanded(
-              flex: 5,
+              flex: 8,
               child: ReusableCard(
                 colour: kActiveCardColour,
                 cardChild: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Text(
+                    AutoSizeText(
                       bmiResult,
                       style: kBMIResult,
                     ),
-                    Text(
+                    AutoSizeText(
                       bmiValue,
                       style: kBMIValue,
                     ),
-                    Text(
+                    AutoSizeText(
                       bmiDescription,
                       style: kBMIDescription,
                       textAlign: TextAlign.center,
@@ -59,11 +59,14 @@ class ResultsPage extends StatelessWidget {
                 ),
               ),
             ),
-            CalcButton(
-              buttonText: 'RE-CALCULATE',
-              onPressed: () {
-                Navigator.pop(context);
-              },
+            Expanded(
+              flex: 1,
+              child: CalcButton(
+                buttonText: 'RE-CALCULATE',
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+              ),
             ),
           ]),
     );

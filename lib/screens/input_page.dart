@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:bmi_calculator/components/calculate_button.dart';
@@ -28,7 +29,7 @@ class _InputPageState extends State<InputPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('BMI CALCULATOR'),
+        title: AutoSizeText('BMI CALCULATOR'),
       ),
       body: Column(
         children: [
@@ -41,8 +42,10 @@ class _InputPageState extends State<InputPage> {
                     colour: selectedGender == Gender.male
                         ? kActiveCardColour
                         : kInactiveCardColour,
-                    cardChild: IconContent(
-                        cardIcon: FontAwesomeIcons.mars, cardText: 'MALE'),
+                    cardChild: FittedBox(
+                      child: IconContent(
+                          cardIcon: FontAwesomeIcons.mars, cardText: 'MALE'),
+                    ),
                     onPress: () {
                       setState(() {
                         selectedGender = Gender.male;
@@ -55,8 +58,10 @@ class _InputPageState extends State<InputPage> {
                     colour: selectedGender == Gender.female
                         ? kActiveCardColour
                         : kInactiveCardColour,
-                    cardChild: IconContent(
-                        cardIcon: FontAwesomeIcons.venus, cardText: 'FEMALE'),
+                    cardChild: FittedBox(
+                      child: IconContent(
+                          cardIcon: FontAwesomeIcons.venus, cardText: 'FEMALE'),
+                    ),
                     onPress: () {
                       setState(() {
                         selectedGender = Gender.female;
@@ -76,8 +81,9 @@ class _InputPageState extends State<InputPage> {
                     colour: kActiveCardColour,
                     cardChild: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        Text(
+                        AutoSizeText(
                           'HEIGHT',
                           style: kLabelTextStyle,
                         ),
@@ -86,37 +92,39 @@ class _InputPageState extends State<InputPage> {
                           crossAxisAlignment: CrossAxisAlignment.baseline,
                           textBaseline: TextBaseline.alphabetic,
                           children: [
-                            Text(
+                            AutoSizeText(
                               '$height',
                               style: kNumberTextStyle,
                             ),
-                            Text(
+                            AutoSizeText(
                               'cm',
                               style: kLabelTextStyle,
                             ),
                           ],
                         ),
-                        SliderTheme(
-                          data: SliderTheme.of(context).copyWith(
-                            thumbShape: RoundSliderThumbShape(
-                              enabledThumbRadius: 15.0,
+                        Expanded(
+                          child: SliderTheme(
+                            data: SliderTheme.of(context).copyWith(
+                              thumbShape: RoundSliderThumbShape(
+                                enabledThumbRadius: 15.0,
+                              ),
+                              overlayShape:
+                                  RoundSliderOverlayShape(overlayRadius: 25.0),
+                              thumbColor: Color(0xFFEB1555),
+                              overlayColor: Color(0x29EB1555),
+                              activeTrackColor: Colors.white,
+                              inactiveTrackColor: Color(0xFF8D8E98),
                             ),
-                            overlayShape:
-                                RoundSliderOverlayShape(overlayRadius: 30.0),
-                            thumbColor: Color(0xFFEB1555),
-                            overlayColor: Color(0x29EB1555),
-                            activeTrackColor: Colors.white,
-                            inactiveTrackColor: Color(0xFF8D8E98),
-                          ),
-                          child: Slider(
-                            value: height.toDouble(),
-                            onChanged: (double newValue) {
-                              setState(() {
-                                height = newValue.toInt();
-                              });
-                            },
-                            min: 60,
-                            max: 260,
+                            child: Slider(
+                              value: height.toDouble(),
+                              onChanged: (double newValue) {
+                                setState(() {
+                                  height = newValue.toInt();
+                                });
+                              },
+                              min: 60,
+                              max: 260,
+                            ),
                           ),
                         ),
                       ],
@@ -135,38 +143,41 @@ class _InputPageState extends State<InputPage> {
                     colour: kActiveCardColour,
                     cardChild: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        Text(
+                        AutoSizeText(
                           'WEIGHT',
                           style: kLabelTextStyle,
                         ),
-                        Text(
+                        AutoSizeText(
                           '$weight',
                           style: kNumberTextStyle,
                         ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            RoundIconButton(
-                              icon: FontAwesomeIcons.minus,
-                              onPress: () {
-                                setState(() {
-                                  weight--;
-                                });
-                              },
-                            ),
-                            SizedBox(
-                              width: 20,
-                            ),
-                            RoundIconButton(
-                              icon: FontAwesomeIcons.plus,
-                              onPress: () {
-                                setState(() {
-                                  weight++;
-                                });
-                              },
-                            ),
-                          ],
+                        Expanded(
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              RoundIconButton(
+                                icon: FontAwesomeIcons.minus,
+                                onPress: () {
+                                  setState(() {
+                                    weight--;
+                                  });
+                                },
+                              ),
+                              SizedBox(
+                                width: 15,
+                              ),
+                              RoundIconButton(
+                                icon: FontAwesomeIcons.plus,
+                                onPress: () {
+                                  setState(() {
+                                    weight++;
+                                  });
+                                },
+                              ),
+                            ],
+                          ),
                         )
                       ],
                     ),
@@ -178,37 +189,39 @@ class _InputPageState extends State<InputPage> {
                     cardChild: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text(
+                        AutoSizeText(
                           'AGE',
                           style: kLabelTextStyle,
                         ),
-                        Text(
+                        AutoSizeText(
                           '$age',
                           style: kNumberTextStyle,
                         ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            RoundIconButton(
-                              icon: FontAwesomeIcons.minus,
-                              onPress: () {
-                                setState(() {
-                                  age--;
-                                });
-                              },
-                            ),
-                            SizedBox(
-                              width: 20,
-                            ),
-                            RoundIconButton(
-                              icon: FontAwesomeIcons.plus,
-                              onPress: () {
-                                setState(() {
-                                  age++;
-                                });
-                              },
-                            ),
-                          ],
+                        Expanded(
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              RoundIconButton(
+                                icon: FontAwesomeIcons.minus,
+                                onPress: () {
+                                  setState(() {
+                                    age--;
+                                  });
+                                },
+                              ),
+                              SizedBox(
+                                width: 15,
+                              ),
+                              RoundIconButton(
+                                icon: FontAwesomeIcons.plus,
+                                onPress: () {
+                                  setState(() {
+                                    age++;
+                                  });
+                                },
+                              ),
+                            ],
+                          ),
                         )
                       ],
                     ),
@@ -217,21 +230,24 @@ class _InputPageState extends State<InputPage> {
               ],
             ),
           ),
-          CalcButton(
-              buttonText: 'CALCULATE',
-              onPressed: () {
-                BMICalculator bmiCalc =
-                    BMICalculator(height: height, weight: weight);
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => ResultsPage(
-                            bmiValue: bmiCalc.calculateBMI(),
-                            bmiResult: bmiCalc.getResult(),
-                            bmiDescription: bmiCalc.getDescription(),
-                          )),
-                );
-              }),
+          Expanded(
+            flex: 1,
+            child: CalcButton(
+                buttonText: 'CALCULATE',
+                onPressed: () {
+                  BMICalculator bmiCalc =
+                      BMICalculator(height: height, weight: weight);
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => ResultsPage(
+                              bmiValue: bmiCalc.calculateBMI(),
+                              bmiResult: bmiCalc.getResult(),
+                              bmiDescription: bmiCalc.getDescription(),
+                            )),
+                  );
+                }),
+          ),
         ],
       ),
     );

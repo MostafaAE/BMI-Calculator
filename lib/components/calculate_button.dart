@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import '../constants.dart';
 
@@ -15,12 +16,11 @@ class CalcButton extends StatelessWidget {
       },
       child: Container(
         width: double.infinity,
-        height: kBottomContainerHeight,
         margin: EdgeInsets.only(top: 10),
-        padding: EdgeInsets.only(bottom: 15),
+        padding: EdgeInsets.only(bottom: 10),
         color: kBottomContainerColour,
         child: Center(
-          child: Text(
+          child: AutoSizeText(
             buttonText,
             style: kLargeButtonTextStyle,
           ),

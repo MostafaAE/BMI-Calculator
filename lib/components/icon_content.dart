@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import '../constants.dart';
 
@@ -18,7 +19,7 @@ class IconContent extends StatelessWidget {
         SizedBox(
           height: 15.0,
         ),
-        Text(cardText, style: kLabelTextStyle),
+        AutoSizeText(cardText, style: kLabelTextStyle),
       ],
     );
   }
