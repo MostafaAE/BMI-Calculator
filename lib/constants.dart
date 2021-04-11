@@ -25,7 +25,7 @@ const kLargeText = TextStyle(
 
 const kBMIResult = TextStyle(
   fontSize: 22.0,
-  color: Colors.lightGreen,
+  color: Colors.lightBlue,
   fontWeight: FontWeight.bold,
 );
 
